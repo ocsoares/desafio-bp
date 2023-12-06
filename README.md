@@ -4,12 +4,10 @@ Seu desafio será desenvolver um serviço de pedidos e como parte dele, veremos 
 
 ### Proposta
 
-Implementar uma API REST para cadastro de clientes e pedidos
+Implementar uma API REST e front para cadastro de clientes e pedidos e seus respectivos produtos
 
 - O serviço de pedidos deverá persistir no banco de dados todos os atributos recebidos no request
 - A API REST deverá tratar erros no cadastro tais como dados enviados inválidos, CPF/CNPJ inválidos
-
-Considere as informações abaixo para desenvolver o teste:
 
 ### O que esperamos
 

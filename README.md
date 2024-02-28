@@ -11,7 +11,7 @@ Implementar uma API REST e front para cadastro de clientes e pedidos e seus resp
 
 ### O que esperamos
 
-- Que o desafio seja feito em .Net Core e (Angular JS ou React);
+- Que o desafio seja feito em .Net Core e (Angular 13 ou superior ou React);
 - Princípios SOLID;
 - Passo-a-passo de como rodar sua aplicação;
 - Conteinerização da aplicação utilizando docker e docker compose.

@@ -19,7 +19,6 @@ describe("CreateUserService", () => {
         const module = await Test.createTestingModule({
             providers: [
                 CreateUserService,
-                // ACHO que NÃO precisa disso !!!!
                 {
                     provide: UserRepository,
                     useValue: {

@@ -38,7 +38,6 @@ describe("CreateUserService", () => {
                     provide: UserMapper,
                     useValue: {
                         toResponse: jest.fn(),
-                        toResponseList: jest.fn(),
                     },
                 },
             ],
@@ -58,7 +57,7 @@ describe("CreateUserService", () => {
     });
 
     it("It SHOULD NOT be possible to create a user if it already exists by email", async () => {
-        (userRepository.findByEmail as jest.Mock).mockResolvedValue(testUser);
+        jest.spyOn(userRepository, "findByEmail").mockResolvedValue(testUser);
 
         await expect(createUserService.execute(testUser)).rejects.toThrow(
             new UserAlreadyExistsByEmailException(),
@@ -71,7 +70,7 @@ describe("CreateUserService", () => {
     it("It should be possible to create a user", async () => {
         const hashedPassword = Math.random().toString();
 
-        (passwordHasher.hash as jest.Mock).mockResolvedValue(hashedPassword);
+        jest.spyOn(passwordHasher, "hash").mockResolvedValue(hashedPassword);
 
         const userWithHashedPassword = new UserEntity(
             testUser.fullName,
@@ -79,7 +78,7 @@ describe("CreateUserService", () => {
             hashedPassword,
         );
 
-        (userRepository.create as jest.Mock).mockResolvedValue(
+        jest.spyOn(userRepository, "create").mockResolvedValue(
             userWithHashedPassword,
         );
 

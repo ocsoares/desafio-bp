@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { IService } from "src/interfaces/IService";
-import { UserRepository } from "src/repositories/abstracts/UserRepository";
+import { IService } from "../../../../interfaces/IService";
+import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 import { CreateUserDTO } from "./dtos/CreateUserDTO";
-import { UserAlreadyExistsByEmailException } from "src/exceptions/user-exceptions/user-already-exists-by-email.exception";
-import { PasswordHasher } from "src/cryptography/abstracts/password-hasher";
-import { UserResponse } from "src/modules/user/responses/UserResponse";
-import { UserMapper } from "src/modules/user/mappers/UserMapper";
+import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-exceptions/user-already-exists-by-email.exception";
+import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
+import { UserResponse } from "../../../../modules/user/responses/UserResponse";
+import { UserMapper } from "../../../../modules/user/mappers/UserMapper";
 
 @Injectable()
 export class CreateUserService

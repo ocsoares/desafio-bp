@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { UserModule } from "./modules/user/user.module";
 import { PrismaDatabaseModule } from "./repositories/implementations/prisma/prisma-database.module";
 import { BcryptHasherModule } from "./cryptography/implementations/bcrypt/bcrypt-hasher.module";
+import { ProductModule } from "./modules/product/product.module";
 
 @Module({
     imports: [
@@ -13,6 +14,7 @@ import { BcryptHasherModule } from "./cryptography/implementations/bcrypt/bcrypt
         PrismaDatabaseModule,
         BcryptHasherModule,
         UserModule,
+        ProductModule,
     ],
 })
 export class AppModule {}

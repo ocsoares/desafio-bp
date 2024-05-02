@@ -6,6 +6,7 @@ import { TestUtils } from "../../../../utils/TestUtils";
 import { UserMapper } from "../../mappers/UserMapper";
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-exceptions/user-already-exists-by-email.exception";
+import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user-exceptions/user-already-exists-by-cpf.exception";
 
 describe("CreateUserService", () => {
     let userRepository: UserRepository;
@@ -22,8 +23,8 @@ describe("CreateUserService", () => {
                 {
                     provide: UserRepository,
                     useValue: {
-                        findByName: jest.fn(),
                         findByEmail: jest.fn(),
+                        findByCPF: jest.fn(),
                         create: jest.fn(),
                     },
                 },
@@ -67,6 +68,18 @@ describe("CreateUserService", () => {
         expect(passwordHasher.hash).not.toHaveBeenCalledTimes(1);
     });
 
+    it("It SHOULD NOT be possible to create a user if it already exists by CPF", async () => {
+        jest.spyOn(userRepository, "findByCPF").mockResolvedValue(testUser);
+
+        await expect(createUserService.execute(testUser)).rejects.toThrow(
+            new UserAlreadyExistsByCPFException(),
+        );
+
+        expect(userRepository.findByEmail).toHaveBeenCalledWith(testUser.email);
+        expect(userRepository.findByCPF).toHaveBeenCalledWith(testUser.cpf);
+        expect(passwordHasher.hash).not.toHaveBeenCalledTimes(1);
+    });
+
     it("It should be possible to create a user", async () => {
         const hashedPassword = Math.random().toString();
 
@@ -75,6 +88,7 @@ describe("CreateUserService", () => {
         const userWithHashedPassword = new UserEntity(
             testUser.fullName,
             testUser.email,
+            testUser.cpf,
             hashedPassword,
         );
 

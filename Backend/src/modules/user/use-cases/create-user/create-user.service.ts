@@ -6,7 +6,7 @@ import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-e
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserResponse } from "../../../../modules/user/responses/UserResponse";
 import { UserMapper } from "../../../../modules/user/mappers/UserMapper";
-import { UserAlreadyExistsByCPFException } from "src/exceptions/user-exceptions/user-already-exists-by-cpf.exception";
+import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user-exceptions/user-already-exists-by-cpf.exception";
 
 @Injectable()
 export class CreateUserService

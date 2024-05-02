@@ -6,6 +6,7 @@ import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-e
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserResponse } from "../../../../modules/user/responses/UserResponse";
 import { UserMapper } from "../../../../modules/user/mappers/UserMapper";
+import { UserAlreadyExistsByCPFException } from "src/exceptions/user-exceptions/user-already-exists-by-cpf.exception";
 
 @Injectable()
 export class CreateUserService
@@ -18,12 +19,20 @@ export class CreateUserService
     ) {}
 
     async execute(data: CreateUserDTO): Promise<UserResponse> {
-        const userAlreadyExists = await this.userRepository.findByEmail(
+        const userAlreadyExistsByEmail = await this.userRepository.findByEmail(
             data.email,
         );
 
-        if (userAlreadyExists) {
+        if (userAlreadyExistsByEmail) {
             throw new UserAlreadyExistsByEmailException();
+        }
+
+        const userAlreadyExistsByCPF = await this.userRepository.findByCPF(
+            data.cpf,
+        );
+
+        if (userAlreadyExistsByCPF) {
+            throw new UserAlreadyExistsByCPFException();
         }
 
         const hashedPassword = await this.passwordHasher.hash(

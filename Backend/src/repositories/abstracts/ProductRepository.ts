@@ -6,5 +6,5 @@ export abstract class ProductRepository {
         data: CreateProductDTO,
         hash: string,
     ): Promise<ProductEntity>;
-    abstract findByHash(hash: string): Promise<ProductEntity>;
+    abstract findByHash(hash: string): Promise<ProductEntity | null>;
 }

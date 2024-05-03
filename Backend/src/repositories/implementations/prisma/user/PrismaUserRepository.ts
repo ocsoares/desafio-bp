@@ -12,13 +12,13 @@ export class PrismaUserRepository implements UserRepository {
         return await this.prismaService.user.create({ data });
     }
 
-    async findByEmail(email: string): Promise<UserEntity> {
+    async findByEmail(email: string): Promise<UserEntity | null> {
         return await this.prismaService.user.findUnique({
             where: { email },
         });
     }
 
-    async findByCPF(cpf: string): Promise<UserEntity> {
+    async findByCPF(cpf: string): Promise<UserEntity | null> {
         return await this.prismaService.user.findUnique({ where: { cpf } });
     }
 }

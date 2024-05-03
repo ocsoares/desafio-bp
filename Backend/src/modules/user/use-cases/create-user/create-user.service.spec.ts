@@ -2,7 +2,7 @@ import { Test } from "@nestjs/testing";
 import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 import { CreateUserService } from "./create-user.service";
 import { UserEntity } from "../../../../entity/UserEntity";
-import { UserTestUtils } from "../../../../utils/UserTestUtils";
+import { UserTestUtils } from "../../../test/utils/UserTestUtils";
 import { UserMapper } from "../../mappers/UserMapper";
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user/user-already-exists-by-email.exception";

@@ -2,7 +2,7 @@ import { Test } from "@nestjs/testing";
 import { CreateUserController } from "./create-user.controller";
 import { CreateUserService } from "./create-user.service";
 import { UserTestDependenciesModule } from "../../../test/user-test-dependencies.module";
-import { UserTestUtils } from "../../../../utils/UserTestUtils";
+import { UserTestUtils } from "../../../test/utils/UserTestUtils";
 
 describe("CreateUserController", () => {
     let createUserController: CreateUserController;

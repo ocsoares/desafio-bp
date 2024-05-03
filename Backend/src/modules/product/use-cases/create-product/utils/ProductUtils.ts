@@ -3,10 +3,8 @@ import { CreateProductDTO } from "../dtos/CreateProductDTO";
 
 export class ProductUtils {
     generateHash({ name, brand, cnpj }: CreateProductDTO): string {
-        const productHash = createHash("sha256");
-
-        productHash.update(`${name}${brand}${cnpj}`);
-
-        return productHash.digest("hex");
+        return createHash("sha256")
+            .update(`${name}${brand}${cnpj}`)
+            .digest("hex");
     }
 }

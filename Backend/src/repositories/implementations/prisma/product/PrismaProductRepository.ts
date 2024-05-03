@@ -8,11 +8,13 @@ import { Injectable } from "@nestjs/common";
 export class PrismaProductRepository implements ProductRepository {
     constructor(private readonly prismaService: PrismaService) {}
 
-    async create(data: CreateProductDTO): Promise<ProductEntity> {
-        return await this.prismaService.product.create({ data });
+    async create(data: CreateProductDTO, hash: string): Promise<ProductEntity> {
+        return await this.prismaService.product.create({
+            data: { ...data, hash },
+        });
     }
 
-    async findByCNPJ(cnpj: string): Promise<ProductEntity> {
-        return await this.prismaService.product.findUnique({ where: { cnpj } });
+    async findByHash(hash: string): Promise<ProductEntity> {
+        return await this.prismaService.product.findUnique({ where: { hash } });
     }
 }

@@ -27,8 +27,9 @@ model Product {
     id          String        @id @default(uuid())
     name        String
     brand       String
-    cnpj        String        @unique
+    cnpj        String
     price       Float
+    hash        String        @unique
     createdAt   DateTime      @default(now())
     updatedAt   DateTime      @updatedAt
     ProductUser ProductUser[]

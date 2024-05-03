@@ -2,9 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { IService } from "src/interfaces/IService";
 import { ProductResponse } from "../../responses/ProductResponse";
 import { CreateProductDTO } from "./dtos/CreateProductDTO";
-import { ProductAlreadyExistsByCNPJException } from "src/exceptions/product/product-already-exists-by-cnpj.exception";
 import { ProductMapper } from "../../mappers/ProductMapper";
 import { ProductRepository } from "src/repositories/abstracts/ProductRepository";
+import { ProductUtils } from "./utils/ProductUtils";
+import { ProductAlreadyRegisteredByCompanyException } from "src/exceptions/product/product-already-registered-by-company.exception";
 
 @Injectable()
 export class CreateProductService
@@ -13,16 +14,22 @@ export class CreateProductService
     constructor(
         private readonly productRepository: ProductRepository,
         private readonly productMapper: ProductMapper,
+        private readonly productUtils: ProductUtils,
     ) {}
     async execute(data: CreateProductDTO): Promise<ProductResponse> {
-        const productAlreadyExistsByCNPJ =
-            await this.productRepository.findByCNPJ(data.cnpj);
+        const productHash = this.productUtils.generateHash(data);
 
-        if (productAlreadyExistsByCNPJ) {
-            throw new ProductAlreadyExistsByCNPJException();
+        const productAlreadyExistsByHash =
+            await this.productRepository.findByHash(productHash);
+
+        if (productAlreadyExistsByHash) {
+            throw new ProductAlreadyRegisteredByCompanyException();
         }
 
-        const createdProduct = await this.productRepository.create(data);
+        const createdProduct = await this.productRepository.create(
+            data,
+            productHash,
+        );
 
         return this.productMapper.toResponse(createdProduct);
     }

@@ -4,5 +4,6 @@ export class ProductEntity {
         public readonly brand: string,
         public readonly cnpj: string,
         public readonly price: number,
+        public readonly hash: string,
     ) {}
 }

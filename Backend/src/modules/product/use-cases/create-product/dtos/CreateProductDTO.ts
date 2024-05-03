@@ -11,8 +11,8 @@ export class CreateProductDTO {
 
     @IsNotEmpty()
     @IsString()
-    @Matches(/^(\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}|\d{14})$/, {
-        message: "cnpj must be a cnpj",
+    @Matches(/^\d{14}$/, {
+        message: "cnpj must be a cnpj without punctuation",
     })
     readonly cnpj: string;
 

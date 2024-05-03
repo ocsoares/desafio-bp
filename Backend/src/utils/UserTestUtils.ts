@@ -2,7 +2,7 @@ import { UserResponse } from "../modules/user/responses/UserResponse";
 import { UserEntity } from "../entity/UserEntity";
 import { CreateUserDTO } from "src/modules/user/use-cases/create-user/dtos/CreateUserDTO";
 
-export class TestUtils {
+export class UserTestUtils {
     static userBodyData(): UserEntity {
         return new UserEntity(
             "Teste Testando",

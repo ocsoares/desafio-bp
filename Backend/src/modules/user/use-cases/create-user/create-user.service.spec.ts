@@ -2,7 +2,7 @@ import { Test } from "@nestjs/testing";
 import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 import { CreateUserService } from "./create-user.service";
 import { UserEntity } from "../../../../entity/UserEntity";
-import { TestUtils } from "../../../../utils/TestUtils";
+import { UserTestUtils } from "../../../../utils/UserTestUtils";
 import { UserMapper } from "../../mappers/UserMapper";
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user/user-already-exists-by-email.exception";
@@ -14,7 +14,7 @@ describe("CreateUserService", () => {
     let userMapper: UserMapper;
     let createUserService: CreateUserService;
 
-    const testUser = TestUtils.userBodyData();
+    const testUser = UserTestUtils.userBodyData();
 
     beforeEach(async () => {
         const module = await Test.createTestingModule({
@@ -96,7 +96,9 @@ describe("CreateUserService", () => {
             userWithHashedPassword,
         );
 
-        const userResponseData = TestUtils.toResponse(userWithHashedPassword);
+        const userResponseData = UserTestUtils.toResponse(
+            userWithHashedPassword,
+        );
 
         (userMapper.toResponse as jest.Mock).mockResolvedValue(
             userResponseData,

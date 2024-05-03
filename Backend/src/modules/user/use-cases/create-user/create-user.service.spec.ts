@@ -5,8 +5,8 @@ import { UserEntity } from "../../../../entity/UserEntity";
 import { TestUtils } from "../../../../utils/TestUtils";
 import { UserMapper } from "../../mappers/UserMapper";
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
-import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-exceptions/user-already-exists-by-email.exception";
-import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user-exceptions/user-already-exists-by-cpf.exception";
+import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user/user-already-exists-by-email.exception";
+import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user/user-already-exists-by-cpf.exception";
 
 describe("CreateUserService", () => {
     let userRepository: UserRepository;

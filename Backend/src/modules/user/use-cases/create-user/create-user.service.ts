@@ -2,11 +2,11 @@ import { Injectable } from "@nestjs/common";
 import { IService } from "../../../../interfaces/IService";
 import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 import { CreateUserDTO } from "./dtos/CreateUserDTO";
-import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user-exceptions/user-already-exists-by-email.exception";
+import { UserAlreadyExistsByEmailException } from "../../../../exceptions/user/user-already-exists-by-email.exception";
 import { PasswordHasher } from "../../../../cryptography/abstracts/password-hasher";
 import { UserResponse } from "../../../../modules/user/responses/UserResponse";
 import { UserMapper } from "../../../../modules/user/mappers/UserMapper";
-import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user-exceptions/user-already-exists-by-cpf.exception";
+import { UserAlreadyExistsByCPFException } from "../../../../exceptions/user/user-already-exists-by-cpf.exception";
 
 @Injectable()
 export class CreateUserService

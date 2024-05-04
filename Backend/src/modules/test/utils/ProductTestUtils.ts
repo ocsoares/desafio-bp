@@ -28,7 +28,11 @@ export class ProductTestUtils {
         return data;
     }
 
-    static toResponse({ name, brand, price }: ProductEntity): ProductResponse {
-        return new ProductResponse(name, brand, price);
+    static toResponse(): ProductResponse {
+        return new ProductResponse(
+            ProductTestUtils.createProduct().name,
+            ProductTestUtils.createProduct().brand,
+            ProductTestUtils.createProduct().price,
+        );
     }
 }

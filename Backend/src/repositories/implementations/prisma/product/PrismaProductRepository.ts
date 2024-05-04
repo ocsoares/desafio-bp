@@ -17,4 +17,8 @@ export class PrismaProductRepository implements ProductRepository {
     async findByHash(hash: string): Promise<ProductEntity | null> {
         return await this.prismaService.product.findUnique({ where: { hash } });
     }
+
+    async findById(id: string): Promise<ProductEntity | null> {
+        return await this.prismaService.product.findUnique({ where: { id } });
+    }
 }

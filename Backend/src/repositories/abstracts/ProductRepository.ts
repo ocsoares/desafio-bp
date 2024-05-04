@@ -7,4 +7,5 @@ export abstract class ProductRepository {
         hash: string,
     ): Promise<ProductEntity>;
     abstract findByHash(hash: string): Promise<ProductEntity | null>;
+    abstract findById(id: string): Promise<ProductEntity | null>;
 }

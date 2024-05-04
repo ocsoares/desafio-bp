@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { IService } from "src/interfaces/IService";
+import { IService } from "../../../../interfaces/IService";
 import { ProductResponse } from "../../responses/ProductResponse";
 import { CreateProductDTO } from "./dtos/CreateProductDTO";
 import { ProductMapper } from "../../mappers/ProductMapper";
-import { ProductRepository } from "src/repositories/abstracts/ProductRepository";
+import { ProductRepository } from "../../../../repositories/abstracts/ProductRepository";
 import { ProductUtils } from "./utils/ProductUtils";
-import { ProductAlreadyRegisteredByCompanyException } from "src/exceptions/product/product-already-registered-by-company.exception";
+import { ProductAlreadyRegisteredByCompanyException } from "../../../../exceptions/product/product-already-registered-by-company.exception";
 
 @Injectable()
 export class CreateProductService

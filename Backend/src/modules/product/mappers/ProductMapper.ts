@@ -5,4 +5,10 @@ export class ProductMapper {
     toResponse({ name, brand, price }: ProductEntity): ProductResponse {
         return new ProductResponse(name, brand, price);
     }
+
+    toResponseArray(productEntityArray: ProductEntity[]): ProductResponse[] {
+        return productEntityArray.map((productEntity) =>
+            this.toResponse(productEntity),
+        );
+    }
 }

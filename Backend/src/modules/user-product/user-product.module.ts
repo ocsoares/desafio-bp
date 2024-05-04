@@ -4,13 +4,15 @@ import { CreateUserProductService } from "./use-cases/create-user-product/create
 import { UserProductMapper } from "./mappers/UserProductMapper";
 import { FindAllUserProductsService } from "./use-cases/find-all-user-products/find-all-user-products.service";
 import { FindAllUserProductsController } from "./use-cases/find-all-user-products/find-all-user-products.controller";
+import { ProductMapper } from "../product/mappers/ProductMapper";
 
 @Module({
     controllers: [CreateUserProductController, FindAllUserProductsController],
     providers: [
         CreateUserProductService,
-        UserProductMapper,
         FindAllUserProductsService,
+        UserProductMapper,
+        ProductMapper,
     ],
 })
 export class UserProductModule {}

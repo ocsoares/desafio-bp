@@ -15,6 +15,7 @@ describe("CreateProductService", () => {
     const hashProduct = ProductTestUtils.generateHash();
     const testProduct = ProductTestUtils.createProduct();
     const productDTOData = ProductTestUtils.createProductDTOData();
+    const productResponse = ProductTestUtils.toResponse();
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -53,6 +54,11 @@ describe("CreateProductService", () => {
         expect(productMapper).toBeDefined();
         expect(productUtils).toBeDefined();
         expect(createProductService).toBeDefined();
+
+        expect(hashProduct).toBeDefined();
+        expect(testProduct).toBeDefined();
+        expect(productDTOData).toBeDefined();
+        expect(productResponse).toBeDefined();
     });
 
     it("It SHOULD NOT be possible to create a product if it already exists by hash", async () => {
@@ -75,8 +81,6 @@ describe("CreateProductService", () => {
         (productUtils.generateHash as jest.Mock).mockReturnValue(hashProduct);
 
         jest.spyOn(productRepository, "create").mockResolvedValue(testProduct);
-
-        const productResponse = ProductTestUtils.toResponse(testProduct);
 
         jest.spyOn(productMapper, "toResponse").mockReturnValue(
             productResponse,

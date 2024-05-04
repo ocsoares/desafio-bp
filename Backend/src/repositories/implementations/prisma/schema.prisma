@@ -18,7 +18,7 @@ model User {
     password    String
     createdAt   DateTime      @default(now())
     updatedAt   DateTime      @updatedAt
-    ProductUser ProductUser[]
+    ProductUser UserProduct[]
 
     @@map("users")
 }
@@ -32,12 +32,12 @@ model Product {
     hash        String        @unique
     createdAt   DateTime      @default(now())
     updatedAt   DateTime      @updatedAt
-    ProductUser ProductUser[]
+    ProductUser UserProduct[]
 
     @@map("products")
 }
 
-model ProductUser {
+model UserProduct {
     id        String   @id @default(uuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -48,5 +48,5 @@ model ProductUser {
     product   Product @relation(fields: [productId], references: [id])
     productId String
 
-    @@map("products_user")
+    @@map("user_product")
 }

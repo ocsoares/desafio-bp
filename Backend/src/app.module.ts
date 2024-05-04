@@ -4,6 +4,7 @@ import { UserModule } from "./modules/user/user.module";
 import { PrismaDatabaseModule } from "./repositories/implementations/prisma/prisma-database.module";
 import { BcryptHasherModule } from "./cryptography/implementations/bcrypt/bcrypt-hasher.module";
 import { ProductModule } from "./modules/product/product.module";
+import { UserProductModule } from "./modules/user-product/user-product.module";
 
 @Module({
     imports: [
@@ -15,6 +16,7 @@ import { ProductModule } from "./modules/product/product.module";
         BcryptHasherModule,
         UserModule,
         ProductModule,
+        UserProductModule,
     ],
 })
 export class AppModule {}

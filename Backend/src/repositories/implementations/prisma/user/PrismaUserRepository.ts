@@ -21,4 +21,8 @@ export class PrismaUserRepository implements UserRepository {
     async findByCPF(cpf: string): Promise<UserEntity | null> {
         return await this.prismaService.user.findUnique({ where: { cpf } });
     }
+
+    async findById(id: string): Promise<UserEntity | null> {
+        return await this.prismaService.user.findUnique({ where: { id } });
+    }
 }

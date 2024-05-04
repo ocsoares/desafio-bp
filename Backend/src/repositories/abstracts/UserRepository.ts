@@ -5,4 +5,5 @@ export abstract class UserRepository {
     abstract create(data: CreateUserDTO): Promise<UserEntity>;
     abstract findByEmail(email: string): Promise<UserEntity | null>;
     abstract findByCPF(cpf: string): Promise<UserEntity | null>;
+    abstract findById(id: string): Promise<UserEntity | null>;
 }

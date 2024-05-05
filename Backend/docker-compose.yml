@@ -12,3 +12,14 @@ services:
             - ./pgdata:/var/lib/postgresql/data
         ports:
             - 5432:5432
+
+    redis:
+        container_name: redis
+        image: redis:7-alpine
+        command: redis-server --requirepass ${REDIS_PASSWORD}
+        environment:
+            - REDIS_PASSWORD=${REDIS_PASSWORD}
+        volumes:
+            - /redisdata:/var/lib/redis/data
+        ports:
+            - 6379:6379

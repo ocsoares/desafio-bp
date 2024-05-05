@@ -9,12 +9,19 @@ import { PrismaUserRepository } from "../../repositories/implementations/prisma/
 import { UserRepository } from "../../repositories/abstracts/UserRepository";
 import { PrismaUserProductRepository } from "../../repositories/implementations/prisma/user-product/PrismaUserProductRepository";
 import { UserProductRepository } from "../../repositories/abstracts/UserProductRepository";
+import { FindAllUserProductsService } from "../user-product/use-cases/find-all-user-products/find-all-user-products.service";
+import { FindAllUserProductsController } from "../user-product/use-cases/find-all-user-products/find-all-user-products.controller";
+import { ProductMapper } from "../product/mappers/ProductMapper";
+import { CACHE_MANAGER } from "@nestjs/cache-manager";
 
 @Module({
     providers: [
         CreateUserProductService,
         CreateUserProductController,
+        FindAllUserProductsService,
+        FindAllUserProductsController,
         UserProductMapper,
+        ProductMapper,
         {
             provide: UserRepository,
             useClass: PrismaUserRepository,
@@ -28,6 +35,14 @@ import { UserProductRepository } from "../../repositories/abstracts/UserProductR
             useClass: PrismaUserProductRepository,
         },
         PrismaService,
+        {
+            provide: CACHE_MANAGER,
+            useValue: {
+                get: jest.fn(),
+                set: jest.fn(),
+                del: jest.fn(),
+            },
+        },
     ],
     exports: [
         CreateUserProductService,

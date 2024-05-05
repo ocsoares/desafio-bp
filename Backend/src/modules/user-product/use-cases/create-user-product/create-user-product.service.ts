@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { UserProductRepository } from "src/repositories/abstracts/UserProductRepository";
-import { UserRepository } from "src/repositories/abstracts/UserRepository";
-import { ProductRepository } from "src/repositories/abstracts/ProductRepository";
-import { IServiceTwoArguments } from "src/interfaces/IServiceTwoArguments";
-import { UserNotFoundByIdException } from "src/exceptions/user/user-not-found-by-id.exception";
-import { ProductNotFoundByIdException } from "src/exceptions/product/product-not-found-by-id.exception";
+import { UserProductRepository } from "../../../../repositories/abstracts/UserProductRepository";
+import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
+import { ProductRepository } from "../../../../repositories/abstracts/ProductRepository";
+import { IServiceTwoArguments } from "../../../../interfaces/IServiceTwoArguments";
+import { UserNotFoundByIdException } from "../../../../exceptions/user/user-not-found-by-id.exception";
+import { ProductNotFoundByIdException } from "../../../../exceptions/product/product-not-found-by-id.exception";
 import { UserProductMapper } from "../../mappers/UserProductMapper";
 import { UserProductResponse } from "../../responses/UserProductResponse";
 

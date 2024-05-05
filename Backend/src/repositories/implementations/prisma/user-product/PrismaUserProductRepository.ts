@@ -1,8 +1,8 @@
-import { UserProductEntity } from "src/entity/UserProductEntity";
-import { UserProductRepository } from "src/repositories/abstracts/UserProductRepository";
+import { UserProductEntity } from "../../../../entity/UserProductEntity";
+import { UserProductRepository } from "../../../../repositories/abstracts/UserProductRepository";
 import { PrismaService } from "../prisma-client.service";
 import { Injectable } from "@nestjs/common";
-import { ProductEntity } from "src/entity/ProductEntity";
+import { ProductEntity } from "../../../../entity/ProductEntity";
 
 @Injectable()
 export class PrismaUserProductRepository implements UserProductRepository {

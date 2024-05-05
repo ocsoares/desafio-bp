@@ -1,11 +1,11 @@
 import { CACHE_MANAGER, Cache } from "@nestjs/cache-manager";
 import { Inject, Injectable } from "@nestjs/common";
-import { UserNotFoundByIdException } from "src/exceptions/user/user-not-found-by-id.exception";
-import { IService } from "src/interfaces/IService";
-import { ProductMapper } from "src/modules/product/mappers/ProductMapper";
-import { ProductResponse } from "src/modules/product/responses/ProductResponse";
-import { UserProductRepository } from "src/repositories/abstracts/UserProductRepository";
-import { UserRepository } from "src/repositories/abstracts/UserRepository";
+import { UserNotFoundByIdException } from "../../../../exceptions/user/user-not-found-by-id.exception";
+import { IService } from "../../../../interfaces/IService";
+import { ProductMapper } from "../../../../modules/product/mappers/ProductMapper";
+import { ProductResponse } from "../../../../modules/product/responses/ProductResponse";
+import { UserProductRepository } from "../../../../repositories/abstracts/UserProductRepository";
+import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 
 @Injectable()
 export class FindAllUserProductsService

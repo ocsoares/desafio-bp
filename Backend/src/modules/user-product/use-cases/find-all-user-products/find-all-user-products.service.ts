@@ -27,8 +27,13 @@ export class FindAllUserProductsService
             throw new UserNotFoundByIdException();
         }
 
+        console.log(
+            "`${this.REDIS_KEY}${userId}`:",
+            `${this.REDIS_KEY}${userId}`,
+        );
+
         const cachedUserProducts = (await this.cache.get(
-            this.REDIS_KEY,
+            `${this.REDIS_KEY}${userId}`,
         )) as ProductResponse[];
 
         if (cachedUserProducts) {
@@ -41,7 +46,10 @@ export class FindAllUserProductsService
         const allUserProductsResponse =
             this.productMapper.toResponseArray(allUserProducts);
 
-        await this.cache.set(this.REDIS_KEY, allUserProductsResponse);
+        await this.cache.set(
+            `${this.REDIS_KEY}${userId}`,
+            allUserProductsResponse,
+        );
 
         return allUserProductsResponse;
     }

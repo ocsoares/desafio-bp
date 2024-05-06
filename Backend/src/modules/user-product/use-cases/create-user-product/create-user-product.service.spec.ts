@@ -4,7 +4,7 @@ import { UserRepository } from "../../../../repositories/abstracts/UserRepositor
 import { ProductRepository } from "../../../../repositories/abstracts/ProductRepository";
 import { UserProductRepository } from "../../../../repositories/abstracts/UserProductRepository";
 import { UserProductMapper } from "../../mappers/UserProductMapper";
-import { CreateUserProductUtils } from "../../../test/utils/CreateUserProductUtils";
+import { CreateUserProductTestUtils } from "../../../test/utils/CreateUserProductTestUtils";
 import { UserNotFoundByIdException } from "../../../../exceptions/user/user-not-found-by-id.exception";
 import { ProductNotFoundByIdException } from "../../../../exceptions/product/product-not-found-by-id.exception";
 
@@ -15,12 +15,12 @@ describe("CreateUserProductService", () => {
     let userProductMapper: UserProductMapper;
     let createUserProductService: CreateUserProductService;
 
-    const userId = CreateUserProductUtils.userId();
-    const productId = CreateUserProductUtils.productId();
-    const userEntity = CreateUserProductUtils.createUser();
-    const productEntity = CreateUserProductUtils.createProduct();
-    const userProductEntity = CreateUserProductUtils.createUserProduct();
-    const userProductResponse = CreateUserProductUtils.toResponse();
+    const userId = CreateUserProductTestUtils.userId();
+    const productId = CreateUserProductTestUtils.productId();
+    const userEntity = CreateUserProductTestUtils.createUser();
+    const productEntity = CreateUserProductTestUtils.createProduct();
+    const userProductEntity = CreateUserProductTestUtils.createUserProduct();
+    const userProductResponse = CreateUserProductTestUtils.toResponse();
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({

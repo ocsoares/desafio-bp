@@ -2,15 +2,15 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { CreateUserProductController } from "./create-user-product.controller";
 import { CreateUserProductService } from "./create-user-product.service";
 import { UserProductTestDependenciesModule } from "../../../../modules/test/user-product-test-dependencies.module";
-import { CreateUserProductUtils } from "../../../../modules/test/utils/CreateUserProductUtils";
+import { CreateUserProductTestUtils } from "../../../test/utils/CreateUserProductTestUtils";
 
 describe("CreateUserProductController", () => {
     let createUserProductService: CreateUserProductService;
     let createUserProductController: CreateUserProductController;
 
-    const userId = CreateUserProductUtils.userId();
-    const productId = CreateUserProductUtils.productId();
-    const userProductResponse = CreateUserProductUtils.toResponse();
+    const userId = CreateUserProductTestUtils.userId();
+    const productId = CreateUserProductTestUtils.productId();
+    const userProductResponse = CreateUserProductTestUtils.toResponse();
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({

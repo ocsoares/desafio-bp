@@ -1,11 +1,11 @@
-import { UserProductResponse } from "../../../modules/user-product/responses/UserProductResponse";
+import { UserProductResponse } from "../../user-product/responses/UserProductResponse";
 import { ProductEntity } from "../../../entity/ProductEntity";
 import { UserEntity } from "../../../entity/UserEntity";
 import { UserProductEntity } from "../../../entity/UserProductEntity";
-import { UserResponse } from "../../../modules/user/responses/UserResponse";
-import { ProductResponse } from "../../../modules/product/responses/ProductResponse";
+import { UserResponse } from "../../user/responses/UserResponse";
+import { ProductResponse } from "../../product/responses/ProductResponse";
 
-export class CreateUserProductUtils {
+export class CreateUserProductTestUtils {
     static userId(): string {
         return "4190c3e171e51692556e";
     }
@@ -35,21 +35,21 @@ export class CreateUserProductUtils {
 
     static createUserProduct(): UserProductEntity {
         return new UserProductEntity(
-            CreateUserProductUtils.createUser(),
-            CreateUserProductUtils.createProduct(),
+            CreateUserProductTestUtils.createUser(),
+            CreateUserProductTestUtils.createProduct(),
         );
     }
 
     static toResponse(): UserProductResponse {
         const userResponse = new UserResponse(
-            CreateUserProductUtils.createUser().fullName,
-            CreateUserProductUtils.createUser().email,
+            CreateUserProductTestUtils.createUser().fullName,
+            CreateUserProductTestUtils.createUser().email,
         );
 
         const productResponse = new ProductResponse(
-            CreateUserProductUtils.createProduct().name,
-            CreateUserProductUtils.createProduct().brand,
-            CreateUserProductUtils.createProduct().price,
+            CreateUserProductTestUtils.createProduct().name,
+            CreateUserProductTestUtils.createProduct().brand,
+            CreateUserProductTestUtils.createProduct().price,
         );
 
         return new UserProductResponse(userResponse, productResponse);

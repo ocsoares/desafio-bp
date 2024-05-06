@@ -1,8 +1,8 @@
-import { ProductResponse } from "../../../modules/product/responses/ProductResponse";
+import { ProductResponse } from "../../product/responses/ProductResponse";
 import { UserEntity } from "../../../entity/UserEntity";
 import { ProductEntity } from "../../../entity/ProductEntity";
 
-export class FindAllUserProductsUtils {
+export class FindAllUserProductsTestUtils {
     static userId(): string {
         return "53d5f2deabcf965a1605";
     }

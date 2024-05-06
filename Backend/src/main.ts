@@ -1,7 +1,7 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { PORT } from "./config/app";
+import { App } from "./config/App";
 import helmet from "helmet";
 import { Request, Response } from "express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
@@ -46,7 +46,7 @@ async function bootstrap() {
         res.redirect("/docs");
     });
 
-    await app.listen(PORT);
+    await app.listen(App.port());
 }
 
 bootstrap();

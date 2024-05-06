@@ -3,7 +3,7 @@ import { FindAllUserProductsService } from "./find-all-user-products.service";
 import { UserRepository } from "../../../../repositories/abstracts/UserRepository";
 import { UserProductRepository } from "../../../../repositories/abstracts/UserProductRepository";
 import { ProductMapper } from "../../../../modules/product/mappers/ProductMapper";
-import { FindAllUserProductsUtils } from "../../../../modules/test/utils/FindAllUserProductsUtils";
+import { FindAllUserProductsTestUtils } from "../../../test/utils/FindAllUserProductsTestUtils";
 import { UserNotFoundByIdException } from "../../../../exceptions/user/user-not-found-by-id.exception";
 import { CACHE_MANAGER, Cache } from "@nestjs/cache-manager";
 
@@ -14,11 +14,11 @@ describe("FindAllUserProductsService", () => {
     let cache: Cache;
     let findAllUserProductsService: FindAllUserProductsService;
 
-    const userId = FindAllUserProductsUtils.userId();
-    const userEntity = FindAllUserProductsUtils.createUser();
-    const productEntityArray = FindAllUserProductsUtils.createProductArray();
+    const userId = FindAllUserProductsTestUtils.userId();
+    const userEntity = FindAllUserProductsTestUtils.createUser();
+    const productEntityArray = FindAllUserProductsTestUtils.createProductArray();
     const productResponseArray =
-        FindAllUserProductsUtils.productResponseArray();
+        FindAllUserProductsTestUtils.productResponseArray();
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({

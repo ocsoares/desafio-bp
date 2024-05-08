@@ -27,7 +27,7 @@ export const zodSignUpSchema = z.object({
         .max(14, "O CPF deve estar em um formato válido !")
         .refine(
             (cpfValue) => {
-                return cpf.isValid(cpfValue);
+                return cpf.isValid(cpfValue, true);
             },
             { message: "CPF inválido !" },
         ),

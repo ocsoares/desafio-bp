@@ -2,10 +2,10 @@ import { ISignUpResponse } from "../../interfaces/ISignUpResponse";
 import { ISignUpData } from "../types/ISignUpData";
 
 export class SignUpUserService {
-    static USER_ALREADY_EXISTS_BY_EMAIL_EXCEPTION_MESSAGE =
+    static readonly USER_ALREADY_EXISTS_BY_EMAIL_EXCEPTION_MESSAGE =
         "Already exists a user registered with this email !";
 
-    static USER_ALREADY_EXISTS_BY_CPF_EXCEPTION_MESSAGE =
+    static readonly USER_ALREADY_EXISTS_BY_CPF_EXCEPTION_MESSAGE =
         "Already exists a user registered with this CPF !";
 
     static async execute(data: ISignUpData): Promise<ISignUpResponse> {

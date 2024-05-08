@@ -1,11 +1,11 @@
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodSignUpSchemaType } from "../types/ZodSignUpSchemaType";
 import { zodSignUpSchema } from "../schemas/zodSignUpSchema";
 import { ISignUpData } from "../types/ISignUpData";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signUpUserService } from "../services/signUpUserService";
+import { SignUpUserService } from "../services/SignUpUserService";
 
 export const useAuthSignUp = () => {
     const [formSent, setFormSent] = useState(false);
@@ -16,13 +16,14 @@ export const useAuthSignUp = () => {
     const [cpfExists, setCPFExists] = useState(false);
     const [cpfExistsMessage, setCPFExistsMessage] = useState("");
 
-    // const { push } = useRouter();
+    const { push } = useRouter();
 
     const {
         register,
         handleSubmit,
         control,
         reset,
+        setValue,
         formState: { errors },
     } = useForm<ZodSignUpSchemaType>({
         mode: "all",
@@ -31,19 +32,36 @@ export const useAuthSignUp = () => {
 
     const handleSubmitData = async (data: ISignUpData) => {
         try {
-            const signup = await signUpUserService(data);
+            const signup = await SignUpUserService.execute(data);
 
-            if (signup.statusCode === 409) {
+            if (
+                signup.message ===
+                SignUpUserService.USER_ALREADY_EXISTS_BY_EMAIL_EXCEPTION_MESSAGE
+            ) {
+                setCPFExists(false);
+                setCPFExistsMessage("");
+
                 setEmailExists(true);
                 setEmailExistsMessage(
                     "Esse email já está em uso. Tente outro.",
                 );
 
-                // FAZER em OUTRO IF pq esse é do EMAIL !!!!
+                setValue("email", "");
+
+                return;
+            }
+
+            if (
+                signup.message ===
+                SignUpUserService.USER_ALREADY_EXISTS_BY_CPF_EXCEPTION_MESSAGE
+            ) {
+                setEmailExists(false);
+                setEmailExistsMessage("");
+
                 setCPFExists(true);
                 setCPFExistsMessage("Esse CPF já está em uso. Tente outro.");
 
-                reset();
+                setValue("cpf", "");
 
                 return;
             }
@@ -58,8 +76,7 @@ export const useAuthSignUp = () => {
             reset();
 
             setTimeout(() => {
-                console.log("COLOCAR aqui para ir para a ROTA de PRODUCTS !!!");
-                // push("/auth/login");
+                push("/product/register");
             }, 5000);
         } catch (error) {
             setApiFailed(true);

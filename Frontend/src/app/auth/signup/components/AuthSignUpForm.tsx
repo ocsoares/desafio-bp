@@ -81,7 +81,7 @@ export function AuthSignUpForm() {
 
                 <AuthTextLink
                     text="Já tem uma conta? "
-                    link="product"
+                    link="/product/registration"
                     textLink="Cadastre um produto"
                 />
             </Box>

@@ -1,5 +1,5 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
-import { Lock } from "@mui/icons-material";
+import { PersonAddAlt1 } from "@mui/icons-material";
 import { AppAvatar } from "../../../shared/components/AppAvatar";
 import { AuthSignUpForm } from "./components/AuthSignUpForm";
 
@@ -30,8 +30,8 @@ export default function SignUpForm() {
                         alignItems: "center",
                     }}
                 >
-                    <AppAvatar avatar={<Lock color="secondary" />} />
-                    <Typography variant="h5">Cadastrar</Typography>
+                    <AppAvatar avatar={<PersonAddAlt1 color="secondary" />} />
+                    <Typography variant="h5">Cadastrar usuário</Typography>
                     <AuthSignUpForm />
                 </Box>
             </Paper>

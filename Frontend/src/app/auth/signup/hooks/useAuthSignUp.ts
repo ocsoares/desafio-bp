@@ -76,7 +76,7 @@ export const useAuthSignUp = () => {
             reset();
 
             setTimeout(() => {
-                push("/product/register");
+                push("/product/registration");
             }, 5000);
         } catch (error) {
             setApiFailed(true);

@@ -18,6 +18,8 @@ interface IAppTextFieldProps<T extends FieldValues> {
     helperText?: string;
     id: string;
     type: "text" | "email" | "password";
+    minLength?: number;
+    maxLength?: number;
     label: string;
 }
 
@@ -31,6 +33,8 @@ const AppTextField = React.forwardRef(function AppTextField(
         helperText = "",
         id,
         type,
+        minLength,
+        maxLength,
         label,
     }: IAppTextFieldProps<any>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -57,6 +61,10 @@ const AppTextField = React.forwardRef(function AppTextField(
                         fullWidth
                         id={id}
                         type={type}
+                        inputProps={{
+                            minLength,
+                            maxLength,
+                        }}
                         label={label}
                         {...field}
                     />

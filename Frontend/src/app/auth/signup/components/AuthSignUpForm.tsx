@@ -20,6 +20,8 @@ export function AuthSignUpForm() {
         apiFailedMessage,
         emailExists,
         emailExistsMessage,
+        cpfExists,
+        cpfExistsMessage,
     } = useAuthSignUp();
 
     return (
@@ -34,24 +36,12 @@ export function AuthSignUpForm() {
                     <AppTextField
                         control={control}
                         autoFocus={true}
-                        error={errors.firstName ? true : false}
-                        helperText={errors.firstName?.message}
-                        sm={6}
-                        id="firstName"
+                        error={errors.fullName ? true : false}
+                        helperText={errors.fullName?.message}
+                        id="fullName"
                         type="text"
-                        label="Primeiro nome"
-                        {...register("firstName")}
-                    />
-
-                    <AppTextField
-                        control={control}
-                        error={errors.lastName ? true : false}
-                        helperText={errors.lastName?.message}
-                        sm={6}
-                        id="lastName"
-                        type="text"
-                        label="Segundo nome"
-                        {...register("lastName")}
+                        label="Nome completo"
+                        {...register("fullName")}
                     />
 
                     <AppTextField
@@ -66,22 +56,25 @@ export function AuthSignUpForm() {
 
                     <AppTextField
                         control={control}
+                        autoFocus={true}
+                        error={errors.cpf || cpfExists ? true : false}
+                        helperText={errors.cpf?.message || cpfExistsMessage}
+                        id="cpf"
+                        type="text"
+                        minLength={11}
+                        maxLength={14}
+                        label="CPF"
+                        {...register("cpf")}
+                    />
+
+                    <AppTextField
+                        control={control}
                         error={errors.password ? true : false}
                         helperText={errors.password?.message}
                         id="password"
                         type="password"
                         label="Senha"
                         {...register("password")}
-                    />
-
-                    <AppTextField
-                        control={control}
-                        error={errors.confirmPassword ? true : false}
-                        helperText={errors.confirmPassword?.message}
-                        id="confirmPassword"
-                        type="password"
-                        label="Confirme sua senha"
-                        {...register("confirmPassword")}
                     />
                 </Grid>
                 <AppButton disabled={formSent} text="Cadastrar" />

@@ -13,6 +13,8 @@ export const useAuthSignUp = () => {
     const [apiFailedMessage, setApiFailedMessage] = useState("");
     const [emailExists, setEmailExists] = useState(false);
     const [emailExistsMessage, setEmailExistsMessage] = useState("");
+    const [cpfExists, setCPFExists] = useState(false);
+    const [cpfExistsMessage, setCPFExistsMessage] = useState("");
 
     // const { push } = useRouter();
 
@@ -37,6 +39,10 @@ export const useAuthSignUp = () => {
                     "Esse email já está em uso. Tente outro.",
                 );
 
+                // FAZER em OUTRO IF pq esse é do EMAIL !!!!
+                setCPFExists(true);
+                setCPFExistsMessage("Esse CPF já está em uso. Tente outro.");
+
                 reset();
 
                 return;
@@ -45,6 +51,8 @@ export const useAuthSignUp = () => {
             setApiFailed(false);
             setEmailExists(false);
             setEmailExistsMessage("");
+            setCPFExists(false);
+            setCPFExistsMessage("");
             setFormSent(true);
 
             reset();
@@ -70,5 +78,7 @@ export const useAuthSignUp = () => {
         apiFailedMessage,
         emailExists,
         emailExistsMessage,
+        cpfExists,
+        cpfExistsMessage,
     };
 };

@@ -8,11 +8,20 @@ export const zodSignUpSchema = z.object({
         .string({ required_error: "O nome é obrigatório !" })
         .min(3, "O nome deve ter no mínimo 3 caracteres !")
         .transform((fullName) => {
-            fullName = fullName.trim();
-            fullName = fullName.replaceAll(" ", "");
-            fullName = capitalize(fullName);
+            const partsName = fullName.split(" ");
 
-            return fullName;
+            const processedName = partsName
+                .map((name) => {
+                    if (name !== "da" && name !== "de") {
+                        name = capitalize(name);
+                    }
+
+                    return name;
+                })
+                .toString()
+                .replaceAll(",", " ");
+
+            return processedName.toString();
         }),
 
     email: z

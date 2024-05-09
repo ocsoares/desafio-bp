@@ -1,7 +1,7 @@
-import { AuthSignUpForm } from "@/app/auth/signup/components/AuthSignUpForm";
 import { AppAvatar } from "@/shared/components/AppAvatar";
 import { AddShoppingCart } from "@mui/icons-material";
 import { Container, Paper, Box, Typography } from "@mui/material";
+import ProductRegistrationForm from "./components/ProductRegistrationForm";
 
 export default function ProductRegistration() {
     return (
@@ -32,7 +32,7 @@ export default function ProductRegistration() {
                 >
                     <AppAvatar avatar={<AddShoppingCart color="secondary" />} />
                     <Typography variant="h5">Cadastrar produto</Typography>
-                    <AuthSignUpForm />
+                    <ProductRegistrationForm />
                 </Box>
             </Paper>
         </Container>

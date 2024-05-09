@@ -17,7 +17,7 @@ interface IAppTextFieldProps<T extends FieldValues> {
     error?: boolean;
     helperText?: string;
     id: string;
-    type: "text" | "email" | "password";
+    type: "text" | "number" | "email" | "password";
     minLength?: number;
     maxLength?: number;
     label: string;

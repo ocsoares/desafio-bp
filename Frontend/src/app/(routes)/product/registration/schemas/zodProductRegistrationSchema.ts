@@ -21,7 +21,7 @@ export const zodProductRegistrationSchema = z.object({
             { message: "CNPJ inválido !" },
         ),
 
-    price: z
+    price: z.coerce
         .number({ required_error: "O preço do produto é obrigatório !" })
         .min(1, "O preço do produto é obrigatório !"),
 }) satisfies ZodType<IProductRegistrationData>;

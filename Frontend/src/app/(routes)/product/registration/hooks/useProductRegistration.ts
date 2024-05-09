@@ -62,7 +62,7 @@ export const useProductRegistration = () => {
             reset();
 
             setTimeout(() => {
-                push("/product/list");
+                push("/product/user");
             }, 5000);
         } catch (error) {
             setApiFailed(true);

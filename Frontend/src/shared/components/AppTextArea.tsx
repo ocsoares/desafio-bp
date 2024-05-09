@@ -30,7 +30,7 @@ const AppTextArea = React.forwardRef(function AppTextArea(
         label,
     }: IAppTextAreaProps<any>,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ref,
+    _ref,
 ) {
     return (
         <Controller

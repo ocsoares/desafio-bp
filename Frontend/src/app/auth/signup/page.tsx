@@ -1,40 +1,15 @@
-import { Box, Container, Paper, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { PersonAddAlt1 } from "@mui/icons-material";
 import { AppAvatar } from "../../../shared/components/AppAvatar";
 import { AuthSignUpForm } from "./components/AuthSignUpForm";
+import AppFormStyle from "@/shared/components/AppFormStyle";
 
 export default function SignUpForm() {
     return (
-        <Container
-            component="main"
-            maxWidth="xs"
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                minHeight: "100vh",
-            }}
-        >
-            <Paper
-                elevation={4}
-                sx={{
-                    padding: 5,
-                    marginBottom: 5,
-                }}
-            >
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <AppAvatar avatar={<PersonAddAlt1 color="secondary" />} />
-                    <Typography variant="h5">Cadastrar usuário</Typography>
-                    <AuthSignUpForm />
-                </Box>
-            </Paper>
-        </Container>
+        <AppFormStyle>
+            <AppAvatar avatar={<PersonAddAlt1 color="secondary" />} />
+            <Typography variant="h5">Cadastrar usuário</Typography>
+            <AuthSignUpForm />
+        </AppFormStyle>
     );
 }

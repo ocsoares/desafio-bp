@@ -99,8 +99,8 @@ export default function ProductRegistrationForm() {
 
                 <AuthTextLink
                     text="Já tem um produto cadastrado? "
-                    link="/product/list"
-                    textLink="Veja os produtos"
+                    link="/product/user"
+                    textLink="Cadastre para um usuário"
                 />
             </Box>
             <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>

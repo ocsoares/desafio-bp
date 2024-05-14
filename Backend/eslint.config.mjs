@@ -3,11 +3,13 @@ import tseslint from "typescript-eslint";
 import typeScriptParser from "@typescript-eslint/parser";
 import typeScriptPlugin from "@typescript-eslint/eslint-plugin";
 import prettierRecommended from "eslint-plugin-prettier/recommended";
+import sonarLintPlugin from "eslint-plugin-sonarjs";
 
 export default tseslint.config(
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
     prettierRecommended,
+    sonarLintPlugin.configs.recommended,
     {
         languageOptions: {
             parser: typeScriptParser,

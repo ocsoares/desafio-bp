@@ -16,7 +16,8 @@ describe("FindAllUserProductsService", () => {
 
     const userId = FindAllUserProductsTestUtils.userId();
     const userEntity = FindAllUserProductsTestUtils.createUser();
-    const productEntityArray = FindAllUserProductsTestUtils.createProductArray();
+    const productEntityArray =
+        FindAllUserProductsTestUtils.createProductArray();
     const productResponseArray =
         FindAllUserProductsTestUtils.productResponseArray();
 

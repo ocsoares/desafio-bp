@@ -20,8 +20,6 @@ export class CreateUserController implements IController<UserResponse> {
     @ApiCreatedResponse()
     @Post("user")
     async handle(@Body() body: CreateUserDTO): Promise<UserResponse> {
-        const createdUser = await this.createUserService.execute(body);
-
-        return createdUser;
+        return await this.createUserService.execute(body);
     }
 }
